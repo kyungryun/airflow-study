@@ -1,0 +1,43 @@
+### Conda env 환경에서 테스트
+
+환경 생성 및 에어플로우 설치
+
+```bash
+1. conda create -n airflow_ex python=3.8 # 생략시 기본 python
+2. conda activate airflow_ex or source activate airflow_ex
+3. conda install -y -c conda-forge airflow
+```
+
+에어플로우 설정
+
+```bash
+# airflow 버전 확인
+airflow version
+
+# mysql or mariadb 사용시 관련 패키지 설치
+pip3 install 'apache-airflow[mysql]'
+
+# db 초기화
+airflow db init
+
+# Global variable explicit_defaults_for_timestamp needs to be on (1) for mysql 에러 발생시
+mysql 설정 변경
+
+# sql 쿼리를 통해 변경
+SET GLOBAL explicit_defaults_for_timestame = 1 or ON (mariadb)
+# Variable 'explicit_defaults_for_timestamp' is a read only variable 해당 에러가 난다면
+
+# my.cnf 파일 수정 // brew를 통해 설치했을 경우 /etc/bin/ 아래에 파일이 있음 파일을 열고
+# [mysqld] 아래 내용 추가 후 db 재시작
+explicit_defaults_for_timestamp = 1 or ON (mariadb)
+
+# airflow db init 시 아래와 같은 에러가 뜨는 경우 (mariadb 에서 발생하는듯)
+Specified key was too long; max key length is 3072 bytes
+
+# my.cnf 파일의 [mysqld] 아래에 옵션 추가
+innodb_file_format = barracuda
+innodb_large_prefix = on
+
+
+```
+
