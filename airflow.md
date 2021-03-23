@@ -1,3 +1,7 @@
+
+
+
+
 ### Conda env 환경에서 테스트
 
 환경 생성 및 에어플로우 설치
@@ -6,6 +10,11 @@
 1. conda create -n airflow_ex python=3.8 # 생략시 기본 python
 2. conda activate airflow_ex or source activate airflow_ex
 3. conda install -y -c conda-forge airflow
+# conda-forge 를 이용할 경우 airflow 2.0.1 버전이 설치됨
+# 이전 버전 설치를 하려면 pip 를 이용해서 설치 (pip3 의 경우 가상 환경이 아닌 로컬에 깔릴 수 있음)
+pip3 install apache-airflow==1.10.14
+or 
+pip install apache-airflow==1.10.12 \ --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.12/constraints-3.8.txt"
 ```
 
 에어플로우 설정
@@ -17,8 +26,12 @@ airflow version
 # mysql or mariadb 사용시 관련 패키지 설치
 pip3 install 'apache-airflow[mysql]'
 
+# brew를 통해 설치한 mariadb 서버 실행
+brew services start mariadb
+
 # db 초기화
-airflow db init
+airflow db init # 2버전 이상
+airflow initdb # 2버전 이하
 
 # Global variable explicit_defaults_for_timestamp needs to be on (1) for mysql 에러 발생시
 mysql 설정 변경
