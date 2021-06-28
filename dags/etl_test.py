@@ -4,9 +4,12 @@ from airflow.operators.python_operator import PythonOperator
 import random
 import pymysql
 
+
+# 앞단 작업 실패시 뒷단 실행 안되게
 default_args = {
     'owner': 'airflow',
-    'start_date': datetime(2021, 3, 20)
+    'start_date': datetime(2021, 3, 20),
+    'wait_for_downstream': True
 }
 
 dag = DAG('etl_dag',
