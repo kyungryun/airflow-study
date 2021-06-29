@@ -20,7 +20,7 @@ dag = DAG('etl_dag',
 conn = pymysql.connect(host='localhost', user='airflow', password='airflow', db='airflow', charset='utf8')
 
 
-def select_data():
+def select_data(**kwargs):
     cursor = conn.cursor()
 
     select_sql = "select max(random_number) from airflow_test"
@@ -37,7 +37,7 @@ def select_data():
     return 'CreateFile'
 
 
-def insert_data():
+def insert_data(**kwargs):
     cursor = conn.cursor()
 
     insert_sql = "insert into airflow_test values (%s, now())"
@@ -50,11 +50,13 @@ def insert_data():
 insert_task = PythonOperator(
     task_id='insert_task',
     python_callable=insert_data,
+    provide_context=True,
     dag=dag
 )
 select_task = PythonOperator(
     task_id='select_task',
     python_callable=select_data,
+    provide_context=True,
     dag=dag
 )
 
