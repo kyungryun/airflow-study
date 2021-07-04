@@ -1,8 +1,5 @@
  
 
-import osimport sysfrom functools 
-import partial
-sys.path.append(os.environ['AIRFLOW_HOME']) 
 
 
 
