@@ -1,3 +1,11 @@
+ 
+
+import osimport sysfrom functools 
+import partial
+sys.path.append(os.environ['AIRFLOW_HOME']) 
+
+
+
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
