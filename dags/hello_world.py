@@ -1,13 +1,18 @@
- 
+import os
+import sys
+from functools import partial
+sys.path.append(os.environ['AIRFLOW_HOME'])
 
-
-
-
-from datetime import datetime
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
+from airflow.utils.trigger_rule import TriggerRule
+from datetime import datetime
+import lib.util as util
+from lib.slack import SlackAlert
+import random
+import pymysql
 
 
 def print_hello():
