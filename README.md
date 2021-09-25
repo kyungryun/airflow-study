@@ -7,12 +7,12 @@
 환경 생성 및 에어플로우 설치
 
 ```bash
-1. conda create -n airflow_ex python=3.8 # 생략시 기본 python
+1. conda create -n airflow_ex python=3.8
 2. conda activate airflow_ex or source activate airflow_ex
 3. conda install -y -c conda-forge airflow
 # conda-forge 를 이용할 경우 airflow 2.0.1 버전이 설치됨
 # 이전 버전 설치를 하려면 pip 를 이용해서 설치 
-pip install apache-airflow==1.10.12 \ --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.12/constraints-3.8.txt"
+pip install apache-airflow==1.10.12 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.12/constraints-3.8.txt"
 ```
 
 에어플로우 설정
