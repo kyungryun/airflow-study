@@ -11,6 +11,7 @@
 2. conda activate airflow_ex or source activate airflow_ex
 3. conda install -y -c conda-forge airflow
 # conda-forge 를 이용할 경우 airflow 2.0.1 버전이 설치됨
+# 2.0 이상 버전 설치를 추천 (이전 버전 서포트 중지 예정)
 # 이전 버전 설치를 하려면 pip 를 이용해서 설치 
 pip install apache-airflow==1.10.12 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.12/constraints-3.8.txt"
 ```
