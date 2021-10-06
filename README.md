@@ -53,3 +53,6 @@ innodb_large_prefix = on
 
 ```
 
+Todo
+- docker compose 로 설정해보기
+- git sync sidecar 테스트
