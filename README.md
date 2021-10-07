@@ -55,4 +55,13 @@ innodb_large_prefix = on
 
 Todo
 - docker compose 로 설정해보기
+```
+$git clone https://github.com/puckel/docker-airflow
+$cd docker-airflow
+
+$docker pull puckel/docker-airflow
+
+$docker-compose -f docker-compose-LocalExecutor.yml up -d
+$docker ps
+```
 - git sync sidecar 테스트
