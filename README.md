@@ -65,3 +65,4 @@ $docker-compose -f docker-compose-LocalExecutor.yml up -d
 $docker ps
 ```
 - git sync sidecar 테스트
+- airflow 2.0 테스트
