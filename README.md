@@ -66,3 +66,6 @@ $docker ps
 ```
 - git sync sidecar 테스트
 - airflow 2.0 테스트
+- smart sensor 테스트
+- custom sensor 개발 해보기
+- loop 사용방법? , operator in function
