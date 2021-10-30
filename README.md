@@ -69,3 +69,4 @@ $docker ps
 - smart sensor 테스트
 - custom sensor 개발 해보기
 - loop 사용방법? , operator in function
+- flower redis 이용한 병렬 워커 테스트
