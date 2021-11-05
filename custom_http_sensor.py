@@ -64,7 +64,7 @@ class CustomHttpSensor(BaseSensorOperator):
                                      extra_options=self.extra_options)
             if self.response_check:
                 # run content check on response
-                # xcom_push
+                # xcom_push 를 위해 context 정보도 리턴해줌
                 return self.response_check(response, **context)
         except AirflowException as ae:
             if str(ae).startswith("404"):
