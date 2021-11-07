@@ -12,7 +12,7 @@ class MySqlToOracleOperator(BaseOperator):
     :param oracle_conn_id      : Target Oracle Connection
     :param oracle_commit_every : One transaction in Oracle
     """
-    template_fields = ['sql', 'mysql_table', 'oracle_table']
+    template_fields = ['sql', 'mysql_table', 'oracle_table', 'oracle_commit_every']
     @apply_defaults
     def __init__(
             self,
