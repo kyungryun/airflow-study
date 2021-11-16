@@ -24,12 +24,14 @@ dag = DAG(
         schedule_interval='40 0 * * *',
         )
 
-bash_command = 'find /경로/ -type f -mtime +30 -name "*.log" -delete'
-
-log_clean_up = BashOperator(
-    task_id='log_clean_up',
-    bash_command = bash_command,
+dag_clean = BashOperator(
+    task_id='dag_clean',
+    bash_command = 'find /경로/ -type f -mtime +30 -name "*.log" -delete',
     dag=dag,
 )
-
-log_clean_up
+dir_clean = BashOperator(
+    task_id='dir_clean',
+    bash_command = 'find /경로/ -type d -empty -delete',
+    dag=dag,
+)
+dag_clean >> dir_clean
