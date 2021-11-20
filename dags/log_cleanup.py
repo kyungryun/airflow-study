@@ -24,6 +24,7 @@ dag = DAG(
         schedule_interval='40 0 * * *',
         )
 
+# Airflow System log는 logrotate를 이용해서 관리하는 게 더 효율적
 dag_clean = BashOperator(
     task_id='dag_clean',
     bash_command = 'find /경로/ -type f -mtime +30 -name "*.log" -delete',
