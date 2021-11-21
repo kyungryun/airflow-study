@@ -53,6 +53,10 @@ innodb_large_prefix = on
 
 ```
 
+Log 설정
+- find delete 를 통해 dag 로그 삭제
+- logrotate 를 통해 Airflow 시스템 로그 삭제
+
 Todo
 - docker compose 로 설정해보기
 ```
