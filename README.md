@@ -2,7 +2,7 @@
 
 
 
-### Conda env 환경에서 테스트
+### Conda env 환경에서 테스트 - docker 위에 올리는게 더 
 
 환경 생성 및 에어플로우 설치
 
@@ -58,6 +58,7 @@ Log 설정
 - logrotate 를 통해 Airflow 시스템 로그 삭제
 
 Todo
+- Airflow - git 연동 고민 (현재 배포가 너무 번거로움)
 - docker compose 로 설정해보기
 ```
 $git clone https://github.com/puckel/docker-airflow
