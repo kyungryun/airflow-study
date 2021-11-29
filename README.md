@@ -2,7 +2,7 @@
 
 
 
-### Conda env 환경에서 테스트 - docker 위에 올리는게 더 
+### Conda env 환경에서 테스트 - docker 위에 올리는게 더 쉽고 편함
 
 환경 생성 및 에어플로우 설치
 
@@ -59,7 +59,7 @@ Log 설정
 
 Todo
 - Airflow - git 연동 고민 (현재 배포가 너무 번거로움)
-- docker compose 로 설정해보기
+- docker compose 로 설정해보기 (가능하면 minikube위에 올려보는걸로)
 ```
 $git clone https://github.com/puckel/docker-airflow
 $cd docker-airflow
