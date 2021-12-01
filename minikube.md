@@ -34,3 +34,7 @@ $ eval $(minikube docker-env)
 ```
 
 `docker ps `로 Kubernetes 관련 컨테이너가 나오면 성공
+
+## Airflow는 Docker로 테스트를 하자.. k8s 까지 하기엔 기반지식이 부족하기도 하고 오버엔지니어링인듯
+
+
