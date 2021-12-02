@@ -66,8 +66,6 @@ minikube status > /dev/null && eval $(minikube docker-env)
 
 #### docker는 위 셋팅한 minikube를 이용해서 사용하자
 
-
-
 Docker-compose 사용시 `docker-credential-desktop not installed or not available in PATH` 에러가 나온다면
 
 `~/.docker/config.json` 파일 수정 `credsStore -> credStore`
