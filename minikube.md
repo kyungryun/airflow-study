@@ -71,10 +71,3 @@ minikube status > /dev/null && eval $(minikube docker-env)
 Docker-compose 사용시 `docker-credential-desktop not installed or not available in PATH` 에러가 나온다면
 
 `~/.docker/config.json` 파일 수정 `credsStore -> credStore`
-
-
-
-
-
-## 
-
