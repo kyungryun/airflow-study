@@ -50,3 +50,4 @@ airflow_airflow-init_1 exited with code 0
 $ docker-compose up -d
 ```
 
+접속 ip는 `$ minikube ip ` 를 통해 ip를 얻음
