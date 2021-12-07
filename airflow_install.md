@@ -9,6 +9,7 @@ docker-compose.yaml 내려 받기
 ```sh
 $ curl -Lf0 'https://airflow.apache.org/docs/apache-airflow/2.2.2/docker-compose.yaml' 
 ```
+위 docker-compose 에는 `Airflow, postgres, redis, celery, flower` 가 있으며 기본적으로 `CeleryExecutor`로 동작함
 
 `./dags ./logs ./plugins` 폴더 생성
 
@@ -49,3 +50,4 @@ airflow_airflow-init_1 exited with code 0
 $ docker-compose up -d
 ```
 
+접속 ip는 `$ minikube ip ` 를 통해 ip를 얻음
