@@ -31,4 +31,13 @@ Sensor
 
 Airflow 2 부터는 DAG Serialization 이 기본 제공
 
+기타 다른 문제
+
 현재 운영중인 Airflow는 LocalExecutor로 동작하고 있기 때문에 CeleryExecutor 또는 KubernetesExecutor 을 고려해봄 (kubernetes는 힘들어 보이긴 하는데..)
+
+배치가 늘어나면 Worker scale out 이 필요할 수 있는데 현재는 그게 불가능
+
+클러스터 형태로 Executor을 구현하여 HA 구성과 scale out을 가능하게 변경 함
+
+배포 방식 변경
+- dags 폴더내 jupyter lab 설치하여 서버에서 작업
