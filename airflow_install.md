@@ -51,3 +51,27 @@ $ docker-compose up -d
 ```
 
 접속 ip는 `$ minikube ip ` 를 통해 ip를 얻음
+
+
+# Docker 네트워크 대역 설정
+
+`docker-compose` 로 airflow를 구동시키면 ip대역이 172.xx 로 시작하게 되는데 기존 ip와 충돌이 발생할 수 있다.
+
+이런 경우를 방지하기 위해 airflow network를 설정하여 고정 ip로 컨테이너가 동작하게 설정을 해야한다.
+
+```yaml
+# docker-compose.yaml 하단에 아래와 같이 네트워크를 추가해 줌 airflow_net의 네트워크 대역은 192.167.49.0 으로 설정하였는데 원하는 대역으로 설정하면 된다.
+networks:
+    airflow_net:
+      ipam:
+        driver: default
+        config:
+          - subnet: 192.167.49.0/16
+```
+
+```yaml
+# 이후 각 services 마다 구동할 ip를 설정 후 docker-compose up 으로 컨테이너를 실행한다.
+networks:
+      airflow_net:
+        ipv4_address: 192.167.49.x
+```
