@@ -41,3 +41,4 @@ Airflow 2 부터는 DAG Serialization 이 기본 제공
 
 배포 방식 변경
 - dags 폴더내 jupyter lab 설치하여 서버에서 작업
+- jenkins 를 빌드서버로 배포하는 방법 (워크플로우 툴을 두개나 쓰는게 좀 이상..?)
