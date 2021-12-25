@@ -65,7 +65,7 @@ $docker pull puckel/docker-airflow
 $docker-compose -f docker-compose-LocalExecutor.yml up -d
 $docker ps
 ```
-- git sync sidecar 테스트
+- git sync sidecar 테스트 <- 보류 K8S 환경은 아직은 오버엔지니어링
 - airflow 2.0 테스트
 - smart sensor 테스트
 - custom sensor 개발 해보기
