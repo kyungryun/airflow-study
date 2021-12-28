@@ -62,6 +62,23 @@ minikube status > /dev/null && eval $(minikube docker-env)
 
 `docker ps `로 Kubernetes 관련 컨테이너가 나오면 성공
 
+### 클러스터 관리하기
+
+```sh
+# 클러스터 일시정지
+$ minikube pause
+# 클러스터 재개
+$ minikube unpause
+
+# 클러스터 시작
+$ minikube start
+# 클러스터 멈춤
+$ minikube stop
+
+# 클러스터 삭제
+$ minikube delete
+```
+
 ### Airflow는 Docker로 테스트를 하자.. k8s 까지 하기엔 기반지식이 부족하기도 하고 오버엔지니어링인듯
 
 #### docker는 위 셋팅한 minikube를 이용해서 사용하자
