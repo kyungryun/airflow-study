@@ -1,0 +1,95 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:13
+    env_file:
+      - config/common.env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    user: "1000"
+    restart: always
+
+  redis:
+    image: redis:latest
+    env_file:
+      - config/common.env
+    ports:
+      - 6379:6379
+    restart: always
+
+  init:
+    image: ryun/airflow:2.2.2
+    env_file:
+      - config/common.env
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - _AIRFLOW_DB_INIT=true
+      - _AIRFLOW_USER_CREATE=true
+      #- _AIRFLOW_WWW_USER_CREATE=true
+    volumes:
+      - ./airflow:/airflow
+    command: version
+
+
+  webserver:
+    image: ryun/airflow:2.2.2
+    env_file:
+      - config/common.env
+    depends_on:
+      - init
+    volumes:
+      - ./airflow:/airflow
+    ports:
+      - 8080:8080
+    command: webserver
+    user: "1000"
+    restart: always
+
+
+  scheduler:
+    image: ryun/airflow:2.2.2
+    env_file:
+      - config/common.env
+    depends_on:
+      - init
+    volumes:
+      - ./airflow:/airflow
+    command: scheduler
+    user: "1000"
+    restart: always
+
+
+  worker:
+    image: ryun/airflow:2.2.2
+    env_file:
+      - config/common.env
+    environment:
+      - QUEUE_NAME=queue_1
+    depends_on:
+      - webserver
+    volumes:
+      - ./airflow:/airflow
+    ports:
+      - 8081:8080
+    command: celery worker
+    user: "1000"
+    restart: always
+
+
+  flower:
+    image: ryun/airflow:2.2.2
+    env_file:
+      - config/common.env
+    depends_on:
+      - webserver
+    volumes:
+      - ./airflow:/airflow
+    ports:
+      - 5555:5555
+    command: celery flower
+    user: "1000"
+    restart: always
