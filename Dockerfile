@@ -25,7 +25,7 @@ RUN pip install redis
 RUN pip install sasl
 RUN pip install thrift_sasl
 RUN pip install --no-use-pep517 pandas
-RUN pip install --no-use-pep517 apache-airflow[hive,druid,slack,postgres,celery,ssh,oracle]==2.1.0
+RUN pip install --no-use-pep517 apache-airflow[hive,druid,slack,postgres,celery,ssh,oracle]==2.2.2
 RUN pip install psycopg2
 RUN mkdir airflow
 
