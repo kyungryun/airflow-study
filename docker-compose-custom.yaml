@@ -8,7 +8,6 @@ services:
       - ./pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    user: "1000"
     restart: always
 
   redis:
@@ -46,7 +45,6 @@ services:
     ports:
       - 8080:8080
     command: webserver
-    user: "1000"
     restart: always
 
 
@@ -59,7 +57,6 @@ services:
     volumes:
       - ./airflow:/airflow
     command: scheduler
-    user: "1000"
     restart: always
 
 
@@ -76,7 +73,6 @@ services:
     ports:
       - 8081:8080
     command: celery worker
-    user: "1000"
     restart: always
 
 
@@ -91,5 +87,4 @@ services:
     ports:
       - 5555:5555
     command: celery flower
-    user: "1000"
     restart: always
