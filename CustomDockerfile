@@ -1,0 +1,47 @@
+FROM python:3.8-slim-buster
+
+ARG AIRFLOW_VERSION=2.2.3
+ARG PYTHON_VERSION=3.8
+ARG CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
+ARG AIRFLOW_USER_HOME=/airflow
+ARG HOME=/app/puser
+ENV AIRFLOW_HOME=${AIRFLOW_USER_HOME}
+
+RUN apt-get update && apt-get install -y gcc \
+    g++ \
+    vim \
+    procps \
+    netcat \
+    libpq-dev \
+    libsasl2-dev \
+    ssh
+
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install numpy
+RUN pip install Cython
+RUN pip install pendulum
+RUN pip install celery
+RUN pip install flower
+RUN pip install redis
+RUN pip install sasl
+RUN pip install thrift_sasl
+RUN pip install --no-use-pep517 pandas
+# RUN pip install --no-use-pep517 apache-airflow[apache.hdfs,apache.hive,apache.spark,apache.sqoop,hive,slack,postgres,celery,ssh,oracle]==2.2.3
+RUN pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
+RUN pip install psycopg2
+RUN mkdir airflow
+
+COPY ./script/entrypoint.sh /entrypoint.sh
+
+WORKDIR ${AIRFLOW_USER_HOME}
+
+RUN groupadd -g 800 hadoop
+RUN useradd -r -u 5001 -g hadoop 11stde
+RUN chown -R puser ${AIRFLOW_USER_HOME}
+RUN chown -R puser:hadoop ${HOME}
+RUN chmod 750 ${HOME}
+#RUN chmod puser ${AIRFLOW_USER_HOME}
+
+USER 11stde
+
+ENTRYPOINT ["bash", "/entrypoint.sh"]
